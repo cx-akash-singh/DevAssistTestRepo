@@ -1,0 +1,19 @@
+{
+  "name": "vulnerable-demo-app",
+  "version": "1.0.0",
+  "description": "Demo app for SCA scanning — contains intentionally vulnerable dependencies",
+  "main": "app.js",
+  "scripts": {
+    "start": "node app.js"
+  },
+  "dependencies": {
+    "lodash": "4.17.20",
+    "axios": "0.21.0",
+    "express": "4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "2.0.4"
+  },
+  "author": "Akash",
+  "license": "MIT"
+}
