@@ -36,8 +36,14 @@ connection.connect();
 // ===============================
 app.get('/user', (req, res) => {
     const username = req.query.username;
-    const query = "SELECT * FROM users WHERE username = '" + username + "'";
-    connection.query(query, function (err, results) {
+    // Use parameterized query to prevent SQL injection
+    const query = "SELECT * FROM users WHERE username = ?";
+    connection.query(query, [username], function (err, results) {
+        if (err) {
+            // Don't expose database errors to clients
+            res.status(500).send({ error: 'Database error occurred' });
+            return;
+        }
         res.send(results);
     });
 });
